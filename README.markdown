@@ -1,6 +1,12 @@
 ShoeVox
 ===============
 
+By [Robert Baskin](http://www.rsbaskin.com) and [Max Cutler](http://maxcutler.com)
+
+Announcement: [http://blog.rsbaskin.com/post/3717628154/shoevox-voice-control-for-your-pc](http://blog.rsbaskin.com/post/3717628154/shoevox-voice-control-for-your-pc)
+
+---------------
+
 Do you ever lie on your bed watching a movie and wish you could pause it without moving? Do you ever listen to music as you're
 doing things around your room and wish you could go to the next song? Do you ever recline in your desk chair to watch a TV show
 and wish you could mute it without reaching for the mouse?
