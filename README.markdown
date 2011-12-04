@@ -57,7 +57,7 @@ Requirements
 ---------------
 
 * Windows Vista (or greater)
-* .NET Framework 3.5 (or greater)
+* .NET Framework 4.0(or greater)
 
 
 Installation
@@ -66,6 +66,21 @@ Installation
 1. Download zip file from GitHub project page.
 2. Extract zip file to location of your choice.
 3. Run "ShoeVox.exe".
+
+Kinect Support
+---------------
+
+_ShoeVox_ now supports using a Kinect sensor as its audio input source. 
+
+We are using the [Kinect for Windows SDK Beta 2](http://www.kinectforwindows.org), so developers must install that in order to compile ShoeVox.
+
+For users, in addition to the device itself, the following software must be installed:
+
+* [Microsoft Speech Platform SDK](http://www.microsoft.com/download/en/details.aspx?id=14373)
+* [Microsoft Speech Platform Runtime](http://www.microsoft.com/download/en/details.aspx?id=10208)
+* [Kinect for Windows Runtime Language Pack](http://go.microsoft.com/fwlink/?LinkId=220942)
+
+If any of the software is missing or a Kinect is not connected to the PC (including the separate power connection), _ShoeVox_ will instead use the PC's default microphone input.
 
 How it works
 ---------------
@@ -78,10 +93,10 @@ for commands via the computer's default audio input device (i.e., microphone). B
 is active only when media programs are running, _ShoeVox_ should use minimal system resources if the user is
 not consuming media; users can also explicitly turn off listening using the system tray menu.
 
-In this version, the .NET 
-[SpeechRecognitionEngine](http://msdn.microsoft.com/en-us/library/system.speech.recognition.speechrecognitionengine.aspx)
-is used to perform the actual speech recognition, but in the future we hope to use the Kinect sensor or other
-advanced audio input devices.
+When a Kinect sensor is present (and all necessary software requirements are met), the Kinect for Windows SDK's 
+[Microsoft.Speech.Recognition.SpeechRecognitionEngine](http://msdn.microsoft.com/en-us/library/microsoft.speech.recognition.speechrecognitionengine.aspx)
+is used to perform the actual speech recognition. Otherwise, the PC's default microphone input is processed using
+the standard Windows/.NET [System.Speech.Recognition.SpeechRecognitionEngine](http://msdn.microsoft.com/en-us/library/system.speech.recognition.speechrecognitionengine.aspx).
 
 A command prefix, "PC" by default, is used to avoid confusing background noise with intentional user commands.
 

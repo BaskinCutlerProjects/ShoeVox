@@ -1,3 +1,9 @@
+Version 1.5
+===============
+
+* Added support for using a Kinect sensor as the microphone.
+* Note: Now requires .NET Framework 4.0.
+
 Version 1.1
 ===============
 
