@@ -83,7 +83,8 @@ namespace ShoeVox
             //Read the MediaXML with process and grammar definitions
             try
             {
-                programs.LoadFromXml("media.xml");
+                string mediaXmlPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "media.xml");
+                programs.LoadFromXml(mediaXmlPath);
             }
             catch (FileNotFoundException)
             {
@@ -156,7 +157,7 @@ namespace ShoeVox
         {
             if (runOnStartupMenuItem.Checked)
             {
-                startupRegKey.SetValue(regKeyName, Application.ExecutablePath.ToString());
+                startupRegKey.SetValue(regKeyName, "\"" + Application.ExecutablePath.ToString() + "\"");
             }
             else
             {
