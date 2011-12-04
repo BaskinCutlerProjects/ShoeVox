@@ -96,7 +96,7 @@ namespace ShoeVox
             // Initialize speech recognition engine
             try
             {
-                engine = new Recognizer();
+                engine = new SystemRecognizer();
             }
             catch (RecognizerInitializationFailureException ex)
             {
