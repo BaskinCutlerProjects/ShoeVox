@@ -214,6 +214,11 @@ namespace ShoeVox
             }
 
             NativeMethods.SetForegroundWindow(currentForeground);
+
+            if (Properties.Settings.Default.CommandConfirmationTooltip)
+            {
+                notifyIcon.ShowBalloonTip(100, "Command", e.Command, ToolTipIcon.Info);
+            }
         }
 
         #endregion
