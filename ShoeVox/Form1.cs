@@ -197,6 +197,7 @@ namespace ShoeVox
                     if (!String.IsNullOrEmpty(keys))
                     {
                         NativeMethods.SetForegroundWindow(process.MainWindowHandle);
+                        NativeMethods.SetFocus(process.MainWindowHandle);
                         System.Threading.Thread.Sleep(50);
                         if (keys == "{space}")
                         {
@@ -279,5 +280,8 @@ namespace ShoeVox
 
         [DllImport("user32.dll")]
         internal static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr SetFocus(IntPtr hwnd);
     }
 }
