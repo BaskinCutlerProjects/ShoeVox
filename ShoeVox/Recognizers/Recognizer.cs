@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace ShoeVox
 {
@@ -102,6 +103,24 @@ namespace ShoeVox
         /// Builds a SRE grammar based on the previously set prefix and command lists.
         /// </summary>
         protected abstract void BuildGrammar();
+
+        protected void SpeechRecognized(IEnumerable<string> words, float confidence)
+        {
+            // Ignore anything below the confidence threshold
+            if (confidence < Properties.Settings.Default.ConfidenceThreshold)
+            {
+                return;
+            }
+
+            // Count number of words in the prefix
+            int skip = _prefix.Split(' ').Count();
+
+            // Strip the prefix from the recognized phrase to get the command
+            string command = String.Join(" ", words.Skip(skip).ToArray());
+
+            // Fire event
+            OnCommandRecognized(command);
+        }
         #endregion
     }
 }

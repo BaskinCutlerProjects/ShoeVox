@@ -70,20 +70,7 @@ namespace ShoeVox
         #region Private methods
         private void _engine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            // Ignore anything below the confidence threshold
-            if (e.Result.Confidence < Properties.Settings.Default.ConfidenceThreshold)
-            {
-                return;
-            }
-
-            // Count number of words in the prefix
-            int skip = _prefix.Split(' ').Count();
-
-            // Strip the prefix from the recognized phrase to get the command
-            string command = String.Join(" ", e.Result.Words.Skip(skip).Select(x => x.Text).ToArray());
-
-            // Fire event
-            OnCommandRecognized(command);
+            SpeechRecognized(e.Result.Words.Select(x => x.Text), e.Result.Confidence);
         }
         #endregion     
     }
