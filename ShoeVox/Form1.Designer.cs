@@ -24,6 +24,7 @@
                 }
                 if (null != engine)
                 {
+                    EngineRunning = false;
                     engine.CommandRecognized -= new System.EventHandler<CommandRecognizedEventArgs>(engine_CommandRecognized);
                     engine.Dispose();
                 }

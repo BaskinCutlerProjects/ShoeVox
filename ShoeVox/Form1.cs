@@ -72,6 +72,23 @@ namespace ShoeVox
             programs = new MediaPrograms();
         }
 
+        private IRecognizer ChooseRecognizer()
+        {
+            try
+            {
+                if (KinectRecognizer.CanUseKinect())
+                    return new KinectRecognizer();
+            }
+            catch (FileNotFoundException)
+            {
+                // Couldn't load the Kinect DLL, probably because the SDK isn't installed
+            }
+            
+            // Kinect SDK could not be loaded or no Kinect is attached,
+            // so just use default system microphone
+            return new SystemRecognizer();   
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //Check the runOnStartup box if the reg key exists
@@ -96,7 +113,7 @@ namespace ShoeVox
             // Initialize speech recognition engine
             try
             {
-                engine = new SystemRecognizer();
+                engine = ChooseRecognizer();
             }
             catch (RecognizerInitializationFailureException ex)
             {
